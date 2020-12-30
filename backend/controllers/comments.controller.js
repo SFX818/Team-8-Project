@@ -3,11 +3,11 @@ const Cafe = db.cafe
 const User = db.user
 const Comment = db.comments
 
-//changing all ids to yelpIds
+//changing all ids to yelpIds - now comment model does not reference the cafe model but rather just references the yelpID
 
 exports.displayComments = (req, res) => {
     //find all cafes from certain cafeId
-    Comment.find({YelpId: req.body.yelpId}).then(data=>{
+    Comment.find({CafeId: req.body.yelpId}).then(data=>{
         res.send(data)
     })
     .catch(err=>{
@@ -54,7 +54,7 @@ exports.deleteComments = (req, res) => {
     const userId = req.body.userId
     const yelpId = req.body.yelpId
     //delete where user and id match commment
-    Comment.findOneAndDelete({UserId: userId, cafeId: yelpId}, function(err){
+    Comment.findOneAndDelete({UserId: userId, CafeId: yelpId}, function(err){
         if(err) {console.log(err)} else {console.log('successful deletion!')}
     }).then(data=>{
         res.send(data)

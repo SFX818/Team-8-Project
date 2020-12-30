@@ -8,10 +8,11 @@ const Comments = mongoose.model(
             ref: "User"
         }],
         Content: String,
-        CafeId: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Cafe"
-        }]       
+        // CafeId: [{
+        //     type: mongoose.Schema.Types.ObjectId,
+        //     ref: "Cafe"
+        // }]     
+        CafeId: String  
         
     })
 )
